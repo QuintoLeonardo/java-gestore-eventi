@@ -27,5 +27,29 @@ public class GestoreEventiApplication {
         int numeroPostiTotali = scanner.nextInt();
 
         Evento evento = new Evento(titolo, data, numeroPostiTotali);
+
+        // Prenotazioni
+        System.out.println("Quante prenotazioni vuoi effettuare?");
+        int prenotazioniDaEffettuare = scanner.nextInt();
+        for (int i = 0; i < prenotazioniDaEffettuare; i++) {
+            evento.prenota();
+        }
+
+        // Stato delle prenotazioni
+        System.out.println("Posti prenotati: " + evento.getNumeroPostiPrenotati());
+        System.out.println("Posti disponibili: " + (evento.getNumeroPostiTotali() - evento.getNumeroPostiPrenotati()));
+
+        // Disdette
+        System.out.println("Quante prenotazioni vuoi disdire?");
+        int disdetteDaEffettuare = scanner.nextInt();
+        for (int i = 0; i < disdetteDaEffettuare; i++) {
+            evento.disdici();
+        }
+
+        // Stato finale delle prenotazioni
+        System.out.println("Posti prenotati: " + evento.getNumeroPostiPrenotati());
+        System.out.println("Posti disponibili: " + (evento.getNumeroPostiTotali() - evento.getNumeroPostiPrenotati()));
+
+        scanner.close();
     }
 }
